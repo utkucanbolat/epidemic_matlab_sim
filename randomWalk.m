@@ -1,10 +1,6 @@
-% randomWalk function returns x and y values with probability pxu/norm,
-% pxd/norm etc.
-% pxu represents the probability of going x-up-direction, pxd = x-down-dir.
-% Same goes for pyu and pyd.
-
-% for example, if random number gives 1 then particle goes x-up direction
-% or, if random number gives 4 then particle goes y-down direction.
+% randomWalk function returns x and y values of the next timestep
+% for example, if random number gives 1 then particle goes x direction
+% or, if random number gives 4 then particle goes -y direction.
 % o | 3 | o
 % ---------
 % 2 |   | 1
