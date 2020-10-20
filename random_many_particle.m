@@ -36,7 +36,7 @@ zdata(1) = in;
 %% figure
 figure('units','normalized','outerposition',[0 0 1 1]);
 
-for i = 2:time
+for i = 2:time %since 1 is the first time step, the iteration starts from 2
     clf;    
     for n = 1:N*(1-rat) 
         %update the position for each particle
@@ -64,10 +64,11 @@ for i = 2:time
     scatter(x(:,i), y(:,i), 20, z, "o", "Filled")
     xlim([1 dim]);
     ylim([1 dim]);
-    title({"When 90% of the Particles are Stationary", strcat("Timestep: ", num2str(i-1))}, 'FontSize', 30)
+    title({strcat("When ", num2str(rat*100) ,"% of the Particles are Stationary"), strcat("Timestep: ", num2str(i-1))}, 'FontSize', 30)
     axis square
     grid on
     box on
+    hold off
     set(gca,'xtick',(1:dim))
     set(gca,'ytick',(1:dim))
     set(gca,'XTickLabel',[]);
@@ -84,6 +85,7 @@ for i = 2:time
     axis square
     grid on
     box on
+    hold off
     
     ax = gca;
     ax.XAxis.FontSize = 15;
@@ -95,7 +97,7 @@ end
 
 %% save
 
-mywriter = VideoWriter('video', "MPEG-4");
+mywriter = VideoWriter(strcat('video', num2str(rat)), "MPEG-4");
 mywriter.FrameRate = 15;
 
 open(mywriter);
